@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:,">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conheça a ONG Esperança e saiba como apoiar nossas ações sociais.">
+    <title>ONG Esperança - Início</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js" defer></script>
+    <script type="module" src="../js/main.js"></script>
+</head>
+<body>
+    <a class="skip-link" href="#app">Ir para o conteúdo principal</a>
+    <header class="site-header">
+        <div class="container header-content">
+            <p class="site-name">ONG Esperança</p>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" hidden><span class="menu-icon" aria-hidden="true">☰</span> <span class="menu-label">Abrir menu</span></button>
+            <nav id="menu-principal" class="site-nav" aria-label="Navegação principal">
+                <ul class="menu-list">
+                    <li><a href="#/inicio">Início</a></li>
+                    <li class="has-submenu">
+                        <div class="submenu-heading">
+                            <a href="#/projetos">Projetos</a>
+                            <button class="submenu-toggle" type="button" aria-label="Seções de projetos" aria-expanded="false" aria-controls="submenu-projetos" hidden>Seções <span aria-hidden="true">▾</span></button>
+                        </div>
+                        <ul id="submenu-projetos" class="submenu">
+                            <li><a href="#/projetos/campanhas">Campanhas de doação</a></li>
+                            <li><a href="#/projetos/voluntariado">Trabalho voluntário</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#/cadastro">Cadastro</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="app" class="container" tabindex="-1"></main>
+
+    <template id="template-inicio">
+
+        <section class="hero grid-12" aria-labelledby="titulo-principal">
+            <div class="hero-text col-4">
+                <h1 id="titulo-principal">ONG Esperança</h1>
+                <p>A ONG Esperança realiza ações sociais com a ajuda de voluntários, doadores e moradores da comunidade.</p>
+                <a class="button" href="#/projetos">Conheça nossos projetos</a>
+            </div>
+            <picture class="col-8">
+                <source srcset="../imagens/ong.webp" type="image/webp">
+                <img src="../imagens/ong.jpg" alt="Voluntários da ONG Esperança participando de uma ação social" width="1200" height="675">
+            </picture>
+        </section>
+
+        <section aria-labelledby="quem-somos">
+            <h2 id="quem-somos">Quem somos</h2>
+            <p>A ONG Esperança desenvolve ações sociais para ajudar pessoas em situação de vulnerabilidade. Nosso trabalho conta com voluntários, doadores e o apoio da comunidade.</p>
+
+            <article class="nested-content" aria-labelledby="nossa-atuacao">
+                <h3 id="nossa-atuacao">Nossa atuação</h3>
+                <p>Realizamos campanhas de arrecadação, ações comunitárias e projetos sociais que atendem necessidades importantes da população.</p>
+
+                <section aria-labelledby="principais-acoes">
+                    <h4 id="principais-acoes">Principais ações</h4>
+                    <p>Arrecadamos alimentos, roupas e outros itens importantes, que são organizados e encaminhados às pessoas atendidas.</p>
+
+                    <section aria-labelledby="participacao-comunidade">
+                        <h5 id="participacao-comunidade">Participação da comunidade</h5>
+                        <p>A participação de voluntários e doadores permite ampliar as ações e fortalece os vínculos de solidariedade na comunidade.</p>
+                    </section>
+                </section>
+            </article>
+        </section>
+
+        <section aria-labelledby="missao">
+            <h2 id="missao">Nossa missão</h2>
+            <p>Nossa missão é apoiar a comunidade por meio de projetos sociais, campanhas de arrecadação e ações que promovam acolhimento e melhores oportunidades.</p>
+        </section>
+
+        <section aria-labelledby="como-participar">
+            <h2 id="como-participar">Como participar</h2>
+            <div class="cards grid-12">
+                <article class="col-6">
+                    <h3>Doações</h3>
+                    <p>Você pode contribuir com alimentos, roupas e doações financeiras destinadas às atividades da ONG.</p>
+                    <a href="#/projetos/campanhas">Ver campanhas de doação</a>
+                </article>
+                <article class="col-6">
+                    <h3>Voluntariado</h3>
+                    <p>Voluntários podem ajudar na organização das campanhas, no recebimento de itens e nas ações comunitárias.</p>
+                    <a href="#/cadastro">Quero ser voluntário</a>
+                </article>
+            </div>
+        </section>
+
+        <section aria-labelledby="contato">
+            <h2 id="contato">Contato</h2>
+            <address>
+                <p><strong>Telefone:</strong> <a href="tel:+5511999999999">(11)&nbsp;99999&#8209;9999</a></p>
+                <p><strong>E-mail:</strong> <a href="mailto:contato@ongesperanca.org.br">contato@ongesperanca.org.br</a></p>
+                <p><strong>Endereço:</strong> Rua Exemplo, 100 - Centro</p>
+            </address>
+        </section>
+    
+    </template>
+
+    <template id="template-projetos">
+
+        <section class="page-intro col-12" aria-labelledby="titulo-projetos">
+            <h1 id="titulo-projetos">Projetos sociais</h1>
+            <h2>Conheça nossas ações</h2>
+            <p>Os projetos da ONG Esperança atendem necessidades da comunidade por meio de campanhas de doação e do trabalho de voluntários.</p>
+        </section>
+
+        <section class="col-12" aria-labelledby="titulo-destaques">
+            <h2 id="titulo-destaques">Projetos em destaque</h2>
+            <div id="lista-projetos" class="cards project-cards grid-12"></div>
+        </section>
+
+        <section class="col-12" aria-labelledby="titulo-grafico-projetos">
+            <h2 id="titulo-grafico-projetos">Projetos por categoria</h2>
+            <p>Quantidade de projetos em destaque de cada categoria.</p>
+            <p id="resumo-grafico-projetos"></p>
+            <div class="grafico-projetos">
+                <canvas id="grafico-projetos" role="img" aria-label="Gráfico de barras dos projetos por categoria" aria-describedby="resumo-grafico-projetos">Seu navegador não suporta gráficos em canvas.</canvas>
+            </div>
+            <p id="mensagem-grafico-projetos" class="alert alert-error" role="status"></p>
+        </section>
+
+        <section id="campanhas" class="participation-section donation col-6" aria-labelledby="titulo-doacoes">
+            <p class="badge-list"><span class="badge badge-success">Ativo</span> <span class="badge badge-info">Doação</span></p>
+            <h2 id="titulo-doacoes">Campanhas de doação</h2>
+            <article aria-labelledby="como-contribuir">
+                <h3 id="como-contribuir">Como contribuir</h3>
+                <p>As campanhas recebem itens em bom estado e contribuições financeiras. Antes de doar, entre em contato para conhecer as necessidades atuais e combinar a entrega.</p>
+                <section aria-labelledby="tipos-contribuicao">
+                    <h4 id="tipos-contribuicao">Tipos de contribuição</h4>
+                    <p>É possível ajudar com alimentos não perecíveis, roupas limpas e em bom estado ou contribuição financeira para as atividades sociais.</p>
+                    <section aria-labelledby="comunidade-doacao">
+                        <h5 id="comunidade-doacao">Participação da comunidade</h5>
+                        <p>Doadores e voluntários tornam cada campanha possível. A participação contínua da comunidade ajuda a ONG a atender mais pessoas e manter suas ações.</p>
+                    </section>
+                </section>
+            </article>
+        </section>
+
+        <section class="participation-section volunteer col-6" aria-labelledby="titulo-voluntariado">
+            <p class="badge-list"><span class="badge badge-warning">Em andamento</span> <span class="badge badge-info">Voluntariado</span></p>
+            <h2 id="titulo-voluntariado">Trabalho voluntário</h2>
+            <article aria-labelledby="funcionamento-voluntariado">
+                <h3 id="funcionamento-voluntariado">Como funciona</h3>
+                <p>Os voluntários apoiam a organização de doações, a preparação das campanhas e as ações comunitárias. Cada pessoa pode informar sua forma de participação e colaborar conforme sua disponibilidade.</p>
+                <p><a class="button" href="#/cadastro">Quero participar</a></p>
+                <button type="button" class="modal-toggle" aria-controls="modal-participacao" aria-haspopup="dialog">Como participar</button>
+            </article>
+        </section>
+    
+    <dialog id="modal-participacao" class="modal" aria-labelledby="titulo-modal" aria-describedby="texto-modal">
+        <h2 id="titulo-modal">Como participar do voluntariado</h2>
+        <p id="texto-modal">Você pode ajudar na organização de doações e nas ações comunitárias, conforme sua disponibilidade. Preencha o cadastro indicando voluntariado. Entre em contato com a ONG para combinar as atividades.</p>
+        <button type="button" class="modal-close" autofocus>Fechar</button>
+    </dialog>
+    </template>
+
+    <template id="template-card-projeto">
+        <article class="col-4">
+            <h3 class="projeto-titulo"></h3>
+            <p class="badge-list">
+                <span class="badge projeto-status"></span>
+                <span class="badge badge-info projeto-categoria"></span>
+            </p>
+            <p class="projeto-descricao"></p>
+            <a class="projeto-link"></a>
+        </article>
+    </template>
+
+    <template id="template-cadastro">
+
+        <section aria-labelledby="titulo-cadastro">
+            <h1 id="titulo-cadastro">Cadastro de apoiador</h1>
+            <p>Preencha os campos para demonstrar interesse em participar. Os itens marcados com * são obrigatórios.</p>
+
+            <form id="form-cadastro">
+                <fieldset>
+                    <legend>Dados pessoais</legend>
+                    <div class="form-grid grid-12">
+                        <div class="field field-wide">
+                            <label for="nome">Nome completo <span aria-hidden="true">*</span></label>
+                            <input type="text" id="nome" name="nome" minlength="3" autocomplete="name" aria-describedby="nome-erro" required>
+                            <small id="nome-erro" class="error-message" hidden></small>
+                        </div>
+                        <div class="field">
+                            <label for="nascimento">Data de nascimento <span aria-hidden="true">*</span></label>
+                            <input type="date" id="nascimento" name="nascimento" autocomplete="bday" aria-describedby="nascimento-ajuda nascimento-erro" required>
+                            <small id="nascimento-ajuda">Use o calendário ou digite a data no formato dia/mês/ano.</small>
+                            <small id="nascimento-erro" class="error-message" hidden></small>
+                        </div>
+                        <div class="field">
+                            <label for="cpf">CPF <span aria-hidden="true">*</span></label>
+                            <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" maxlength="14" inputmode="numeric" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Digite o CPF no formato 000.000.000-00" autocomplete="off" aria-describedby="cpf-ajuda cpf-erro" required>
+                            <small id="cpf-ajuda">Formato: 000.000.000-00</small>
+                            <small id="cpf-erro" class="error-message" hidden></small>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Contato</legend>
+                    <div class="form-grid grid-12">
+                        <div class="field">
+                            <label for="email">E-mail <span aria-hidden="true">*</span></label>
+                            <input type="email" id="email" name="email" autocomplete="email" aria-describedby="email-ajuda email-erro" required>
+                            <small id="email-ajuda">Exemplo: nome@exemplo.com</small>
+                            <small id="email-erro" class="error-message" hidden></small>
+                        </div>
+                        <div class="field">
+                            <label for="telefone">Telefone <span aria-hidden="true">*</span></label>
+                            <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999" maxlength="15" inputmode="numeric" pattern="\(\d{2}\)\s\d{4,5}-\d{4}" title="Digite o telefone com DDD: (11) 3333-4444 ou (11) 99999-9999" autocomplete="tel" aria-describedby="telefone-ajuda telefone-erro" required>
+                            <small id="telefone-ajuda">Com DDD: (11) 3333-4444 ou (11) 99999-9999</small>
+                            <small id="telefone-erro" class="error-message" hidden></small>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Endereço</legend>
+                    <div class="form-grid grid-12">
+                        <div class="field">
+                            <label for="cep">CEP <span aria-hidden="true">*</span></label>
+                            <input type="text" id="cep" name="cep" placeholder="00000-000" maxlength="9" inputmode="numeric" pattern="\d{5}-\d{3}" title="Digite o CEP no formato 00000-000" autocomplete="postal-code" aria-describedby="cep-ajuda cep-erro" required>
+                            <small id="cep-ajuda">Formato: 00000-000</small>
+                            <small id="cep-erro" class="error-message" hidden></small>
+                        </div>
+                        <div class="field field-wide">
+                            <label for="endereco">Endereço <span aria-hidden="true">*</span></label>
+                            <input type="text" id="endereco" name="endereco" minlength="3" autocomplete="address-line1" aria-describedby="endereco-erro" required>
+                            <small id="endereco-erro" class="error-message" hidden></small>
+                        </div>
+                        <div class="field">
+                            <label for="numero">Número <span aria-hidden="true">*</span></label>
+                            <input type="text" id="numero" name="numero" aria-describedby="numero-ajuda numero-erro" required>
+                            <small id="numero-ajuda">Número do endereço. Se não houver, digite “s/n”.</small>
+                            <small id="numero-erro" class="error-message" hidden></small>
+                        </div>
+                        <div class="field">
+                            <label for="estado">Estado <span aria-hidden="true">*</span></label>
+                            <select id="estado" name="estado" autocomplete="address-level1" aria-describedby="status-cidade estado-erro" required>
+                                <option value="">Selecione o estado</option>
+                                <option value="AC">AC</option><option value="AL">AL</option>
+                                <option value="AP">AP</option><option value="AM">AM</option>
+                                <option value="BA">BA</option><option value="CE">CE</option>
+                                <option value="DF">DF</option><option value="ES">ES</option>
+                                <option value="GO">GO</option><option value="MA">MA</option>
+                                <option value="MT">MT</option><option value="MS">MS</option>
+                                <option value="MG">MG</option><option value="PA">PA</option>
+                                <option value="PB">PB</option><option value="PR">PR</option>
+                                <option value="PE">PE</option><option value="PI">PI</option>
+                                <option value="RJ">RJ</option><option value="RN">RN</option>
+                                <option value="RS">RS</option><option value="RO">RO</option>
+                                <option value="RR">RR</option><option value="SC">SC</option>
+                                <option value="SP">SP</option><option value="SE">SE</option>
+                                <option value="TO">TO</option>
+                            </select>
+                            <small id="estado-erro" class="error-message" hidden></small>
+                        </div>
+                        <div class="field">
+                            <label for="cidade">Cidade <span aria-hidden="true">*</span></label>
+                            <select id="cidade" name="cidade" autocomplete="address-level2" aria-describedby="status-cidade cidade-erro" required disabled>
+                                <option value="">Selecione o estado</option>
+                            </select>
+                            <small id="status-cidade" class="status alert alert-info" aria-live="polite" aria-atomic="true">Selecione um estado para carregar as cidades.</small>
+                            <small id="cidade-erro" class="error-message" hidden></small>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Forma de participação <span aria-hidden="true">*</span></legend>
+                    <p>Como você deseja ajudar? <span aria-hidden="true">*</span></p>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="participacao-voluntariado" name="participacao" value="voluntariado" aria-describedby="participacao-erro" required>
+                            <label for="participacao-voluntariado">Voluntariado</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="participacao-doacao" name="participacao" value="doacao" aria-describedby="participacao-erro" required>
+                            <label for="participacao-doacao">Doação</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="participacao-ambos" name="participacao" value="ambos" aria-describedby="participacao-erro" required>
+                            <label for="participacao-ambos">Ambos</label>
+                        </div>
+                    </div>
+                    <small id="participacao-erro" class="error-message" hidden></small>
+                </fieldset>
+
+                <p id="aviso-armazenamento">Ao enviar, os dados de contato e participação serão salvos neste navegador para preencher o cadastro novamente. CPF e data de nascimento não serão salvos.</p>
+                <button type="submit" aria-describedby="status-cidade aviso-armazenamento">Enviar cadastro</button>
+                <p id="mensagem-formulario" class="form-message alert" aria-live="polite" aria-atomic="true"></p>
+            </form>
+        </section>
+    
+    </template>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 ONG Esperança. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

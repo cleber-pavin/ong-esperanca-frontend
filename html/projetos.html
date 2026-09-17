@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:,">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conheça os projetos sociais, campanhas e oportunidades de voluntariado da ONG Esperança.">
+    <title>Projetos | ONG Esperança</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/script.js" defer></script>
+</head>
+<body>
+    <a class="skip-link" href="#conteudo-principal">Ir para o conteúdo principal</a>
+    <header class="site-header">
+        <div class="container header-content">
+            <p class="site-name">ONG Esperança</p>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" hidden><span class="menu-icon" aria-hidden="true">☰</span> <span class="menu-label">Abrir menu</span></button>
+            <nav id="menu-principal" class="site-nav" aria-label="Navegação principal">
+                <ul class="menu-list">
+                    <li><a href="index.html">Início</a></li>
+                    <li class="has-submenu">
+                        <div class="submenu-heading">
+                            <a href="projetos.html" aria-current="page">Projetos</a>
+                            <button class="submenu-toggle" type="button" aria-label="Seções de projetos" aria-expanded="false" aria-controls="submenu-projetos" hidden>Seções <span aria-hidden="true">▾</span></button>
+                        </div>
+                        <ul id="submenu-projetos" class="submenu">
+                            <li><a href="projetos.html#campanhas">Campanhas de doação</a></li>
+                            <li><a href="projetos.html#titulo-voluntariado">Trabalho voluntário</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="cadastro.html">Cadastro</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="conteudo-principal" class="container grid-12" tabindex="-1">
+        <section class="page-intro col-12" aria-labelledby="titulo-projetos">
+            <h1 id="titulo-projetos">Projetos sociais</h1>
+            <h2>Conheça nossas ações</h2>
+            <p>Os projetos da ONG Esperança atendem necessidades da comunidade por meio de campanhas de doação e do trabalho de voluntários.</p>
+        </section>
+
+        <section id="campanhas" class="participation-section donation col-6" aria-labelledby="titulo-doacoes">
+            <p class="badge-list"><span class="badge badge-success">Ativo</span> <span class="badge badge-info">Doação</span></p>
+            <h2 id="titulo-doacoes">Campanhas de doação</h2>
+            <article aria-labelledby="como-contribuir">
+                <h3 id="como-contribuir">Como contribuir</h3>
+                <p>As campanhas recebem itens em bom estado e contribuições financeiras. Antes de doar, entre em contato para conhecer as necessidades atuais e combinar a entrega.</p>
+                <section aria-labelledby="tipos-contribuicao">
+                    <h4 id="tipos-contribuicao">Tipos de contribuição</h4>
+                    <p>É possível ajudar com alimentos não perecíveis, roupas limpas e em bom estado ou contribuição financeira para as atividades sociais.</p>
+                    <section aria-labelledby="comunidade-doacao">
+                        <h5 id="comunidade-doacao">Participação da comunidade</h5>
+                        <p>Doadores e voluntários tornam cada campanha possível. A participação contínua da comunidade ajuda a ONG a atender mais pessoas e manter suas ações.</p>
+                    </section>
+                </section>
+            </article>
+        </section>
+
+        <section class="participation-section volunteer col-6" aria-labelledby="titulo-voluntariado">
+            <p class="badge-list"><span class="badge badge-warning">Em andamento</span> <span class="badge badge-info">Voluntariado</span></p>
+            <h2 id="titulo-voluntariado">Trabalho voluntário</h2>
+            <article aria-labelledby="funcionamento-voluntariado">
+                <h3 id="funcionamento-voluntariado">Como funciona</h3>
+                <p>Os voluntários apoiam a organização de doações, a preparação das campanhas e as ações comunitárias. Cada pessoa pode informar sua forma de participação e colaborar conforme sua disponibilidade.</p>
+                <p><a class="button" href="cadastro.html">Quero participar</a></p>
+                <button type="button" class="modal-toggle" aria-controls="modal-participacao" aria-haspopup="dialog">Como participar</button>
+            </article>
+        </section>
+    </main>
+
+    <dialog id="modal-participacao" class="modal" aria-labelledby="titulo-modal" aria-describedby="texto-modal">
+        <h2 id="titulo-modal">Como participar do voluntariado</h2>
+        <p id="texto-modal">Você pode ajudar na organização de doações e nas ações comunitárias, conforme sua disponibilidade. Preencha o cadastro indicando voluntariado. Entre em contato com a ONG para combinar as atividades.</p>
+        <button type="button" class="modal-close" autofocus>Fechar</button>
+    </dialog>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 ONG Esperança. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
