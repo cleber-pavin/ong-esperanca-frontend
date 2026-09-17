@@ -139,3 +139,7 @@ Quando a rota Cadastro entra no DOM, `restaurarCadastro()` em `formulario.js` ch
 ### Gráfico com Chart.js
 
 A rota Projetos mostra um gráfico de barras com a quantidade de cards por categoria. O script Chart.js 4.5.1 é carregado pelo CDN jsDelivr no `html/index.html`, com `defer` antes de `main.js`, que é um módulo. `inicializarGraficoProjetos()` em `grafico.js` conta as categorias do array `projetos`, escreve os valores também em texto e cria o gráfico com `new Chart(...)` depois que o template Projetos entra no DOM. Ao trocar de rota, a instância é destruída antes de remover o canvas; isso evita gráficos duplicados ao voltar. Se a biblioteca não carregar, o resumo textual permanece e uma mensagem informa que o gráfico está indisponível. O canvas usa um contêiner próprio para acompanhar a largura da tela.
+
+## Experiência Prática IV - GitFlow
+
+Esta etapa inicia a organização do desenvolvimento com GitFlow. A branch `main` mantém a versão estável do projeto, `develop` recebe a integração contínua das mudanças da Experiência IV e branches `feature/*`, como `feature/documentacao`, isolam novas alterações antes de serem integradas em `develop`.
