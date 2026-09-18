@@ -12,6 +12,7 @@ export default defineConfig({
         emptyOutDir: true,
         rollupOptions: {
             input: {
+                raiz: resolve(raizProjeto, "index.html"),
                 inicio: resolve(raizProjeto, "html/index.html"),
                 projetos: resolve(raizProjeto, "html/projetos.html"),
                 cadastro: resolve(raizProjeto, "html/cadastro.html")
