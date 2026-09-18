@@ -143,3 +143,7 @@ A rota Projetos mostra um gráfico de barras com a quantidade de cards por categ
 ## Experiência Prática IV - GitFlow
 
 Esta etapa inicia a organização do desenvolvimento com GitFlow. A branch `main` mantém a versão estável do projeto, `develop` recebe a integração contínua das mudanças da Experiência IV e branches `feature/*`, como `feature/documentacao`, isolam novas alterações antes de serem integradas em `develop`.
+
+### Gestão do repositório
+
+A branch `main` preserva as versões estáveis, enquanto `develop` integra o trabalho em andamento. Cada alteração é isolada em uma branch `feature/*`. As tarefas são registradas em Issues e agrupadas em Milestones; depois, as features são submetidas a Pull Requests para revisão do diff antes da integração em `develop`.
