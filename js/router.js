@@ -40,9 +40,9 @@ export function renderRoute(app, moverFoco = false) {
         pagina === "cadastro" ? "container form-page" : "container";
     const titulos = { inicio: "Início", projetos: "Projetos", cadastro: "Cadastro" };
     document.title = `ONG Esperança - ${titulos[pagina] || "Página não encontrada"}`;
-    document.querySelectorAll("#menu-principal .menu-list > li > a, #menu-principal .submenu-heading > a")
+    document.querySelectorAll('#menu-principal a[href^="#/"]')
         .forEach((link) => {
-            if (link.getAttribute("href") === `#/${pagina}`) link.setAttribute("aria-current", "page");
+            if (link.getAttribute("href") === location.hash) link.setAttribute("aria-current", "page");
             else link.removeAttribute("aria-current");
         });
 

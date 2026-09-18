@@ -87,6 +87,8 @@ A página inicial usa a mesma imagem institucional em dois formatos otimizados p
 
 As páginas usam elementos semânticos, hierarquia de títulos, texto alternativo na imagem, labels associados aos campos, grupos com `fieldset` e `legend`, link para pular ao conteúdo principal e foco visível para navegação por teclado.
 
+Na auditoria semântica da Experiência IV, os landmarks nativos foram preservados, `aria-current` passou a identificar também a subrota ativa e o modal manteve o elemento `<dialog>` com controle de foco, `Tab` e `Escape`. Foram executadas verificações de teclado no Edge e uma análise automatizada das rotas principais; esses resultados não representam conformidade integral com a WCAG 2.1 AA nem substituem testes com tecnologias assistivas.
+
 ## Validação W3C
 
 Para verificar os arquivos, acesse o [W3C Markup Validation Service](https://validator.w3.org/), escolha a opção de envio de arquivo e valide separadamente `index.html`, `projetos.html` e `cadastro.html`. Como os arquivos usam caminhos relativos, a ausência dos arquivos de CSS ou imagem no validador não representa erro de sintaxe HTML.
