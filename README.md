@@ -27,7 +27,7 @@ projeto-ong/
 │   └── style.css
 ├── js/
 │   ├── main.js (entrada da SPA)
-│   ├── router.js, menu.js, modal.js e formulario.js
+│   ├── router.js, menu.js, modal.js, contraste.js e formulario.js
 │   ├── storage.js, api.js, projetos.js e grafico.js
 │   └── script.js (compatibilidade com as páginas antigas)
 └── README.md
@@ -91,6 +91,8 @@ Na auditoria semântica da Experiência IV, os landmarks nativos foram preservad
 
 Na auditoria específica de teclado, a ordem de foco foi verificada em desktop e celular, incluindo skip-link, menus, rotas, modal e formulário. Foi removida a transição de cor dos botões porque, ao reativar o envio depois do carregamento das cidades, ela criava um estado breve de baixo contraste entre texto e fundo. O NVDA não estava disponível; a inspeção da árvore de acessibilidade do Edge foi usada como apoio, sem equivaler a um teste com leitor de ecrã.
 
+O botão “Ativar alto contraste” aplica a classe `alto-contraste` ao elemento raiz e troca os tokens de cor do Design System por uma paleta de preto, branco e amarelo. O estado é exposto por `aria-pressed` e salvo na chave `ongEsperancaAltoContraste` do `localStorage`; se o armazenamento falhar, a alternância continua funcionando durante a sessão. O modo permanece ativo entre as rotas e também atualiza as cores do gráfico.
+
 ## Validação W3C
 
 Para verificar os arquivos, acesse o [W3C Markup Validation Service](https://validator.w3.org/), escolha a opção de envio de arquivo e valide separadamente `index.html`, `projetos.html` e `cadastro.html`. Como os arquivos usam caminhos relativos, a ausência dos arquivos de CSS ou imagem no validador não representa erro de sintaxe HTML.
@@ -142,6 +144,7 @@ Os arquivos `html/projetos.html` e `html/cadastro.html` continuam disponíveis c
 - `router.js`: lê o hash, troca o template da rota, atualiza título, navegação e foco.
 - `menu.js`: controla o menu e o submenu em telas maiores e menores.
 - `modal.js`: abre e fecha o diálogo de participação.
+- `contraste.js`: alterna o modo de alto contraste e persiste a preferência local.
 - `formulario.js`: aplica máscaras, valida os campos, carrega cidades e coordena o cadastro.
 - `storage.js`: salva e recupera o cadastro local na chave `ongEsperancaCadastro`.
 - `api.js`: consulta e ordena as cidades da API do IBGE.
