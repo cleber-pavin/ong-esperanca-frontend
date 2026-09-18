@@ -208,3 +208,51 @@ O milestone aberto `Experiência Prática IV` agrupa a Issue `#1`, concluída ap
 ### Build de produção com Vite
 
 O Vite 8.3.0 usa a raiz do projeto e trata `html/index.html`, `html/projetos.html` e `html/cadastro.html` como entradas. A configuração aplica `base: "./"`, gera `dist/`, limpa a saída anterior e mantém o Chart.js via CDN. O CSS e os módulos JavaScript são processados, divididos em assets com hash e minificados para produção.
+
+## Deploy no GitHub Pages
+
+A aplicação está publicada no GitHub Pages com deploy automático via GitHub Actions.
+
+**Plataforma:** GitHub Pages
+**URL pública:** https://cleber-pavin.github.io/ong-esperanca-frontend/
+**Método:** GitHub Actions (build_type: workflow)
+**Branch de produção:** main
+**Build:** Vite 8.3.0
+
+### Workflow
+
+O arquivo `.github/workflows/deploy.yml` dispara automaticamente a cada push ou merge na branch `main`. O workflow executa os seguintes passos:
+
+1. Baixa o repositório (`actions/checkout`)
+2. Configura o Node.js LTS (`actions/setup-node`)
+3. Instala dependências com `npm ci`
+4. Gera o build com `npm run build`
+5. Configura o GitHub Pages (`actions/configure-pages`)
+6. Envia o artefato da pasta `dist/` (`actions/upload-pages-artifact`)
+7. Publica no GitHub Pages (`actions/deploy-pages`)
+
+A branch `main` é a única que dispara o deploy. Alterações em `develop` ou em branches `feature/*` não acionam o workflow.
+
+### Como foi feito
+
+O deploy foi configurado durante a Experiência Prática IV. O PR #11 integrou a configuração do Pages, o workflow de deploy e a correção do `vite.config.js` na branch `main`. Após o merge (commit `f0a598f`), o workflow rodou automaticamente e publicou a aplicação.
+
+### Estrutura publicada
+
+O diretório `dist/` gerado pelo Vite contém:
+
+- `index.html` na raiz (redireciona para `html/index.html`)
+- `html/index.html` (SPA com rotas hash)
+- `html/projetos.html` e `html/cadastro.html` (páginas estáticas)
+- `assets/` com JS, CSS e imagens minificados
+
+### Como verificar
+
+Para conferir se o deploy está funcionando, acesse a URL pública e teste as rotas:
+
+- https://cleber-pavin.github.io/ong-esperanca-frontend/ (redireciona para Início)
+- https://cleber-pavin.github.io/ong-esperanca-frontend/#/inicio
+- https://cleber-pavin.github.io/ong-esperanca-frontend/#/projetos
+- https://cleber-pavin.github.io/ong-esperanca-frontend/#/cadastro
+
+HTTPS está ativo. O certificado é gerenciado automaticamente pelo GitHub Pages.
