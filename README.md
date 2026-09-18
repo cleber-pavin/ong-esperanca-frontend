@@ -1,6 +1,16 @@
 # ONG Esperança
 
-Este é um projeto acadêmico da disciplina Desenvolvimento Front-end - Experiência Prática 1. O objetivo é apresentar uma ONG fictícia, suas ações sociais, campanhas de doação, oportunidades de voluntariado e um formulário para novos apoiadores.
+## Visão geral
+
+Este é um projeto acadêmico da disciplina Desenvolvimento Front-end, desenvolvido de forma incremental nas Experiências Práticas I a IV. A aplicação apresenta a ONG fictícia Esperança, suas ações sociais, campanhas de doação, oportunidades de voluntariado e um formulário para novos apoiadores.
+
+## Funcionalidades principais
+
+- navegação SPA por rotas hash, com páginas estáticas mantidas para compatibilidade;
+- cards de projetos gerados por template e gráfico de categorias;
+- formulário com máscaras, validação, consulta de cidades e persistência local;
+- menu responsivo e modal nativo para orientações de participação;
+- recursos de acessibilidade, como HTML semântico, foco visível e regiões `aria-live`.
 
 ## Estrutura de pastas
 
@@ -31,11 +41,21 @@ projeto-ong/
 
 ## Tecnologias utilizadas
 
-Foram utilizados HTML5, CSS3 e JavaScript puro. O projeto não usa framework, banco de dados ou backend.
+| Tecnologia | Utilização |
+|---|---|
+| HTML5 | Estrutura semântica, formulário, elementos `template`, `dialog` e `picture`. |
+| CSS3 | Design System, Grid, Flexbox, responsividade e estados de foco e validação. |
+| JavaScript ES6 | SPA, módulos nativos, templates dinâmicos, menu, modal e validações. |
+| Web Storage API | Persistência local dos dados permitidos do cadastro com `localStorage`. |
+| Fetch API e API do IBGE | Consulta assíncrona das cidades conforme o Estado selecionado. |
+| Chart.js 4.5.1 | Gráfico de barras carregado por CDN na rota de projetos. |
+| Git e GitHub | Versionamento, GitFlow, Issues, Milestones e Pull Requests. |
+
+O projeto não usa framework, banco de dados ou backend.
 
 ## Como abrir localmente
 
-Para abrir a SPA, use um servidor local: os módulos JavaScript são carregados por HTTP. Abra a pasta `projeto-ong` no terminal e, caso o Python esteja instalado, execute:
+Não há instalação de dependências nem etapa de build. Para abrir a SPA, use um servidor local, pois os módulos JavaScript são carregados por HTTP. Abra a pasta `projeto-ong` no terminal e, caso o Python esteja instalado, execute:
 
 ```text
 python -m http.server 8000
@@ -111,7 +131,7 @@ O cabeçalho e o rodapé ficam na página principal. O conteúdo de cada rota es
 
 Os arquivos `html/projetos.html` e `html/cadastro.html` continuam disponíveis como versões estáticas das páginas anteriores; não são usados para carregar as rotas da SPA. A aplicação permanece sem framework e sem backend. O envio do formulário continua sendo uma demonstração local.
 
-### Módulos JavaScript
+### Módulos JavaScript ES6
 
 `html/index.html` carrega apenas `js/main.js` como módulo da aplicação, além do Chart.js pelo CDN. `main.js` inicia o menu e o roteador da SPA. Os módulos se dividem assim:
 
@@ -140,10 +160,22 @@ Quando a rota Cadastro entra no DOM, `restaurarCadastro()` em `formulario.js` ch
 
 A rota Projetos mostra um gráfico de barras com a quantidade de cards por categoria. O script Chart.js 4.5.1 é carregado pelo CDN jsDelivr no `html/index.html`, com `defer` antes de `main.js`, que é um módulo. `inicializarGraficoProjetos()` em `grafico.js` conta as categorias do array `projetos`, escreve os valores também em texto e cria o gráfico com `new Chart(...)` depois que o template Projetos entra no DOM. Ao trocar de rota, a instância é destruída antes de remover o canvas; isso evita gráficos duplicados ao voltar. Se a biblioteca não carregar, o resumo textual permanece e uma mensagem informa que o gráfico está indisponível. O canvas usa um contêiner próprio para acompanhar a largura da tela.
 
-## Experiência Prática IV - GitFlow
+## Experiência Prática IV - Git e GitHub
 
-Esta etapa inicia a organização do desenvolvimento com GitFlow. A branch `main` mantém a versão estável do projeto, `develop` recebe a integração contínua das mudanças da Experiência IV e branches `feature/*`, como `feature/documentacao`, isolam novas alterações antes de serem integradas em `develop`.
+O código é mantido no repositório público [cleber-pavin/ong-esperanca-frontend](https://github.com/cleber-pavin/ong-esperanca-frontend). A branch `main` continua como referência da versão estável da Experiência III, enquanto o trabalho da Experiência IV é integrado em `develop`.
 
-### Gestão do repositório
+### GitFlow
 
-A branch `main` preserva as versões estáveis, enquanto `develop` integra o trabalho em andamento. Cada alteração é isolada em uma branch `feature/*`. As tarefas são registradas em Issues e agrupadas em Milestones; depois, as features são submetidas a Pull Requests para revisão do diff antes da integração em `develop`.
+A branch `main` preserva versões estáveis, `develop` integra o trabalho em andamento e cada alteração é isolada em uma branch `feature/*`. As features concluídas são revisadas em Pull Requests antes da integração em `develop`.
+
+### Conventional Commits
+
+As mensagens identificam o tipo da alteração. O histórico real usa `chore:` para manutenção e versionamento, `docs:` para documentação e `merge:` para integrações explícitas anteriores. Exemplos incluem `chore: registra versão estável da Experiência III` e `docs: documenta gestão colaborativa do repositório`.
+
+### Semantic Versioning
+
+As versões seguem o formato `MAJOR.MINOR.PATCH`: `MAJOR` para mudanças incompatíveis, `MINOR` para funcionalidades compatíveis e `PATCH` para correções compatíveis. A tag anotada `v1.0.0` identifica a versão estável da Experiência III em `main`; não há outra release publicada.
+
+### Issues, Milestones e Pull Requests
+
+O milestone aberto `Experiência Prática IV` agrupa a Issue `#1`, concluída após a documentação da gestão do repositório, e a Issue `#2`, ainda aberta para a futura revisão de acessibilidade WCAG 2.1 AA. O Pull Request `#3` integrou `feature/gestao-repositorio` em `develop` após a revisão do diff.
