@@ -30,6 +30,8 @@ projeto-ong/
 │   ├── router.js, menu.js, modal.js, contraste.js e formulario.js
 │   ├── storage.js, api.js, projetos.js e grafico.js
 │   └── script.js (compatibilidade com as páginas antigas)
+├── package.json
+├── vite.config.js
 └── README.md
 ```
 
@@ -49,19 +51,35 @@ projeto-ong/
 | Web Storage API | Persistência local dos dados permitidos do cadastro com `localStorage`. |
 | Fetch API e API do IBGE | Consulta assíncrona das cidades conforme o Estado selecionado. |
 | Chart.js 4.5.1 | Gráfico de barras carregado por CDN na rota de projetos. |
+| Vite 8.3.0 | Servidor de desenvolvimento, processamento dos módulos e build minificada. |
 | Git e GitHub | Versionamento, GitFlow, Issues, Milestones e Pull Requests. |
 
 O projeto não usa framework, banco de dados ou backend.
 
 ## Como abrir localmente
 
-Não há instalação de dependências nem etapa de build. Para abrir a SPA, use um servidor local, pois os módulos JavaScript são carregados por HTTP. Abra a pasta `projeto-ong` no terminal e, caso o Python esteja instalado, execute:
+É necessário ter Node.js e npm instalados. Na pasta `projeto-ong`, instale a dependência de desenvolvimento:
 
-```text
-python -m http.server 8000
+```bash
+npm install
 ```
 
-Depois, acesse `http://localhost:8000/html/index.html`.
+Para iniciar o servidor de desenvolvimento:
+
+```bash
+npm run dev
+```
+
+Depois, acesse `http://localhost:5173/html/index.html`.
+
+Para gerar a versão de produção em `dist/` e testá-la localmente:
+
+```bash
+npm run build
+npm run preview
+```
+
+O preview fica disponível em `http://localhost:4173/html/index.html`. A pasta `dist/` contém arquivos processados e minificados, mas não é versionada porque pode ser reproduzida pelo comando de build.
 
 É necessário estar conectado à internet para carregar a lista de cidades fornecida pela API pública do IBGE.
 
@@ -186,3 +204,7 @@ As versões seguem o formato `MAJOR.MINOR.PATCH`: `MAJOR` para mudanças incompa
 ### Issues, Milestones e Pull Requests
 
 O milestone aberto `Experiência Prática IV` agrupa a Issue `#1`, concluída após a documentação da gestão do repositório, e a Issue `#2`, ainda aberta para a futura revisão de acessibilidade WCAG 2.1 AA. O Pull Request `#3` integrou `feature/gestao-repositorio` em `develop` após a revisão do diff.
+
+### Build de produção com Vite
+
+O Vite 8.3.0 usa a raiz do projeto e trata `html/index.html`, `html/projetos.html` e `html/cadastro.html` como entradas. A configuração aplica `base: "./"`, gera `dist/`, limpa a saída anterior e mantém o Chart.js via CDN. O CSS e os módulos JavaScript são processados, divididos em assets com hash e minificados para produção.
