@@ -1,6 +1,16 @@
 # ONG Esperança
 
-Este é um projeto acadêmico da disciplina Desenvolvimento Front-end - Experiência Prática 1. O objetivo é apresentar uma ONG fictícia, suas ações sociais, campanhas de doação, oportunidades de voluntariado e um formulário para novos apoiadores.
+## Visão geral
+
+Este é um projeto acadêmico da disciplina Desenvolvimento Front-end, desenvolvido de forma incremental nas Experiências Práticas I a IV. A aplicação apresenta a ONG fictícia Esperança, suas ações sociais, campanhas de doação, oportunidades de voluntariado e um formulário para novos apoiadores.
+
+## Funcionalidades principais
+
+- navegação SPA por rotas hash, com páginas estáticas mantidas para compatibilidade;
+- cards de projetos gerados por template e gráfico de categorias;
+- formulário com máscaras, validação, consulta de cidades e persistência local;
+- menu responsivo e modal nativo para orientações de participação;
+- recursos de acessibilidade, como HTML semântico, foco visível e regiões `aria-live`.
 
 ## Estrutura de pastas
 
@@ -17,9 +27,11 @@ projeto-ong/
 │   └── style.css
 ├── js/
 │   ├── main.js (entrada da SPA)
-│   ├── router.js, menu.js, modal.js e formulario.js
+│   ├── router.js, menu.js, modal.js, contraste.js e formulario.js
 │   ├── storage.js, api.js, projetos.js e grafico.js
 │   └── script.js (compatibilidade com as páginas antigas)
+├── package.json
+├── vite.config.js
 └── README.md
 ```
 
@@ -31,17 +43,43 @@ projeto-ong/
 
 ## Tecnologias utilizadas
 
-Foram utilizados HTML5, CSS3 e JavaScript puro. O projeto não usa framework, banco de dados ou backend.
+| Tecnologia | Utilização |
+|---|---|
+| HTML5 | Estrutura semântica, formulário, elementos `template`, `dialog` e `picture`. |
+| CSS3 | Design System, Grid, Flexbox, responsividade e estados de foco e validação. |
+| JavaScript ES6 | SPA, módulos nativos, templates dinâmicos, menu, modal e validações. |
+| Web Storage API | Persistência local dos dados permitidos do cadastro com `localStorage`. |
+| Fetch API e API do IBGE | Consulta assíncrona das cidades conforme o Estado selecionado. |
+| Chart.js 4.5.1 | Gráfico de barras carregado por CDN na rota de projetos. |
+| Vite 8.3.0 | Servidor de desenvolvimento, processamento dos módulos e build minificada. |
+| Git e GitHub | Versionamento, GitFlow, Issues, Milestones e Pull Requests. |
+
+O projeto não usa framework, banco de dados ou backend.
 
 ## Como abrir localmente
 
-Para abrir a SPA, use um servidor local: os módulos JavaScript são carregados por HTTP. Abra a pasta `projeto-ong` no terminal e, caso o Python esteja instalado, execute:
+É necessário ter Node.js e npm instalados. Na pasta `projeto-ong`, instale a dependência de desenvolvimento:
 
-```text
-python -m http.server 8000
+```bash
+npm install
 ```
 
-Depois, acesse `http://localhost:8000/html/index.html`.
+Para iniciar o servidor de desenvolvimento:
+
+```bash
+npm run dev
+```
+
+Depois, acesse `http://localhost:5173/html/index.html`.
+
+Para gerar a versão de produção em `dist/` e testá-la localmente:
+
+```bash
+npm run build
+npm run preview
+```
+
+O preview fica disponível em `http://localhost:4173/html/index.html`. A pasta `dist/` contém arquivos processados e minificados, mas não é versionada porque pode ser reproduzida pelo comando de build.
 
 É necessário estar conectado à internet para carregar a lista de cidades fornecida pela API pública do IBGE.
 
@@ -66,6 +104,12 @@ A página inicial usa a mesma imagem institucional em dois formatos otimizados p
 ## Acessibilidade
 
 As páginas usam elementos semânticos, hierarquia de títulos, texto alternativo na imagem, labels associados aos campos, grupos com `fieldset` e `legend`, link para pular ao conteúdo principal e foco visível para navegação por teclado.
+
+Na auditoria semântica da Experiência IV, os landmarks nativos foram preservados, `aria-current` passou a identificar também a subrota ativa e o modal manteve o elemento `<dialog>` com controle de foco, `Tab` e `Escape`. Foram executadas verificações de teclado no Edge e uma análise automatizada das rotas principais; esses resultados não representam conformidade integral com a WCAG 2.1 AA nem substituem testes com tecnologias assistivas.
+
+Na auditoria específica de teclado, a ordem de foco foi verificada em desktop e celular, incluindo skip-link, menus, rotas, modal e formulário. Foi removida a transição de cor dos botões porque, ao reativar o envio depois do carregamento das cidades, ela criava um estado breve de baixo contraste entre texto e fundo. O NVDA não estava disponível; a inspeção da árvore de acessibilidade do Edge foi usada como apoio, sem equivaler a um teste com leitor de ecrã.
+
+O botão “Ativar alto contraste” aplica a classe `alto-contraste` ao elemento raiz e troca os tokens de cor do Design System por uma paleta de preto, branco e amarelo. O estado é exposto por `aria-pressed` e salvo na chave `ongEsperancaAltoContraste` do `localStorage`; se o armazenamento falhar, a alternância continua funcionando durante a sessão. O modo permanece ativo entre as rotas e também atualiza as cores do gráfico.
 
 ## Validação W3C
 
@@ -111,13 +155,14 @@ O cabeçalho e o rodapé ficam na página principal. O conteúdo de cada rota es
 
 Os arquivos `html/projetos.html` e `html/cadastro.html` continuam disponíveis como versões estáticas das páginas anteriores; não são usados para carregar as rotas da SPA. A aplicação permanece sem framework e sem backend. O envio do formulário continua sendo uma demonstração local.
 
-### Módulos JavaScript
+### Módulos JavaScript ES6
 
 `html/index.html` carrega apenas `js/main.js` como módulo da aplicação, além do Chart.js pelo CDN. `main.js` inicia o menu e o roteador da SPA. Os módulos se dividem assim:
 
 - `router.js`: lê o hash, troca o template da rota, atualiza título, navegação e foco.
 - `menu.js`: controla o menu e o submenu em telas maiores e menores.
 - `modal.js`: abre e fecha o diálogo de participação.
+- `contraste.js`: alterna o modo de alto contraste e persiste a preferência local.
 - `formulario.js`: aplica máscaras, valida os campos, carrega cidades e coordena o cadastro.
 - `storage.js`: salva e recupera o cadastro local na chave `ongEsperancaCadastro`.
 - `api.js`: consulta e ordena as cidades da API do IBGE.
@@ -139,3 +184,27 @@ Quando a rota Cadastro entra no DOM, `restaurarCadastro()` em `formulario.js` ch
 ### Gráfico com Chart.js
 
 A rota Projetos mostra um gráfico de barras com a quantidade de cards por categoria. O script Chart.js 4.5.1 é carregado pelo CDN jsDelivr no `html/index.html`, com `defer` antes de `main.js`, que é um módulo. `inicializarGraficoProjetos()` em `grafico.js` conta as categorias do array `projetos`, escreve os valores também em texto e cria o gráfico com `new Chart(...)` depois que o template Projetos entra no DOM. Ao trocar de rota, a instância é destruída antes de remover o canvas; isso evita gráficos duplicados ao voltar. Se a biblioteca não carregar, o resumo textual permanece e uma mensagem informa que o gráfico está indisponível. O canvas usa um contêiner próprio para acompanhar a largura da tela.
+
+## Experiência Prática IV - Git e GitHub
+
+O código é mantido no repositório público [cleber-pavin/ong-esperanca-frontend](https://github.com/cleber-pavin/ong-esperanca-frontend). A branch `main` continua como referência da versão estável da Experiência III, enquanto o trabalho da Experiência IV é integrado em `develop`.
+
+### GitFlow
+
+A branch `main` preserva versões estáveis, `develop` integra o trabalho em andamento e cada alteração é isolada em uma branch `feature/*`. As features concluídas são revisadas em Pull Requests antes da integração em `develop`.
+
+### Conventional Commits
+
+As mensagens identificam o tipo da alteração. O histórico real usa `chore:` para manutenção e versionamento, `docs:` para documentação e `merge:` para integrações explícitas anteriores. Exemplos incluem `chore: registra versão estável da Experiência III` e `docs: documenta gestão colaborativa do repositório`.
+
+### Semantic Versioning
+
+As versões seguem o formato `MAJOR.MINOR.PATCH`: `MAJOR` para mudanças incompatíveis, `MINOR` para funcionalidades compatíveis e `PATCH` para correções compatíveis. A tag anotada `v1.0.0` identifica a versão estável da Experiência III em `main`; não há outra release publicada.
+
+### Issues, Milestones e Pull Requests
+
+O milestone aberto `Experiência Prática IV` agrupa a Issue `#1`, concluída após a documentação da gestão do repositório, e a Issue `#2`, ainda aberta para a futura revisão de acessibilidade WCAG 2.1 AA. O Pull Request `#3` integrou `feature/gestao-repositorio` em `develop` após a revisão do diff.
+
+### Build de produção com Vite
+
+O Vite 8.3.0 usa a raiz do projeto e trata `html/index.html`, `html/projetos.html` e `html/cadastro.html` como entradas. A configuração aplica `base: "./"`, gera `dist/`, limpa a saída anterior e mantém o Chart.js via CDN. O CSS e os módulos JavaScript são processados, divididos em assets com hash e minificados para produção.
